@@ -66,7 +66,7 @@ def RunGame():
     usrbd = PlayArea([[" "] * 5 for i in range(5)])
     Battleship.place_ships(computer_board)
 
-    turns = 25
+    turns = 10
     while turns > 0:
         PlayArea.print_board(usrbd)
         Xrow, Yclm = Battleship.get_user_input(object)
