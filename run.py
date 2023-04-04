@@ -1,8 +1,8 @@
 import random
-
 import sys,time
 
-def delprint(text,delay_time):
+
+def delPrint(text,delay_time):
     for character in text:
         sys.stdout.write(character)
         sys.stdout.flush()
@@ -41,7 +41,7 @@ class Battleship:
             self.board[self.Xrow][self.Yclm] = "X"
         return self.board
 
-    def get_user_input(self):
+    def get_userInput(self):
         try:
             Xrow = input("Choose a row (1-5): ")
             while Xrow not in "12345":
@@ -55,7 +55,7 @@ class Battleship:
             return int(Xrow) - 1, PlayArea.get_let_to_num()[Yclm]
         except ValueError and KeyError:
             print("Not a valid input")
-            return self.get_user_input()
+            return self.get_userInput()
 
     def count_hit_ships(self):
         hit_ships = 0
@@ -66,26 +66,26 @@ class Battleship:
         return hit_ships
 
 
-def RunGame():
-    user_name = input("Please enter your name: ")
+def runGame():
+    userName = input("Please enter your name: ")
 # CODE CREDIT Rules question - https://bobbyhadz.com/blog/python-input-yes-no
     yes_choices = ['yes', 'y']
     no_choices = ['no', 'n']
 
-    def show_rules():
-        delprint("\nFirst, select a row number between 1 & 5\n",.05)
-        delprint("Then select a column letter between A & E\n",.05)
-        delprint("if you hit a ship, an X will appear\n",.05)
-        delprint("if you miss, a - will appear\n\n",.05)
-        delprint(f"Ready {user_name}. Let's Play!\n\n", .05)
+    def showRules():
+        delPrint("\nFirst, select a row number between 1 & 5\n",.05)
+        delPrint("Then select a column letter between A & E\n",.05)
+        delPrint("if you hit a ship, an X will appear\n",.05)
+        delPrint("if you miss, a - will appear\n\n",.05)
+        delPrint(f"Ready {userName}. Let's Play!\n\n", .05)
 
     while True:
-        user_input = input('Do you want to see the rules? (yes/no): ')
-        if user_input.lower() in yes_choices:
-            show_rules()
+        userInput = input('Do you want to see the rules? (yes/no): ')
+        if userInput.lower() in yes_choices:
+            showRules()
             break
-        elif user_input.lower() in no_choices:
-            delprint(f"OK {user_name}. Let's play!\n", .05)
+        elif userInput.lower() in no_choices:
+            delPrint(f"OK {userName}. Let's play!\n", .05)
             break
         else:
             print('Type yes or no')
@@ -95,30 +95,30 @@ def RunGame():
     usrbd = PlayArea([[" "] * 5 for i in range(5)])
     Battleship.place_ships(computer_board)
 
-    turns = 10
+    turns = 25
     while turns > 0:
         PlayArea.print_board(usrbd)
-        Xrow, Yclm = Battleship.get_user_input(object)
+        Xrow, Yclm = Battleship.get_userInput(object)
         while usrbd.board[Xrow][Yclm] == "-" or usrbd.board[Xrow][Yclm] == "X":
             print("You've already guessed that. Please make another selection")
-            Xrow, Yclm = Battleship. get_user_input(object)
+            Xrow, Yclm = Battleship. get_userInput(object)
         if computer_board.board[Xrow][Yclm] == "X":
-            print(f"{user_name} sunk 1 of the Battleships!")
+            print(f"{userName} sunk 1 of the Battleships!\n")
             usrbd.board[Xrow][Yclm] = "X"
         else:
             print("You Missed!")
             usrbd.board[Xrow][Yclm] = "-"
         if Battleship.count_hit_ships(usrbd) == 5:
-            print(f"{user_name} hit all 5 battleships. WINNER!")
+            print(f"{userName} hit all 5 battleships. WINNER!\n")
             break
 
         turns -= 1
         print(f"you have {turns} tries remaining")
         if turns == 0:
-            print(f"Sorry {user_name}, you ran out of tries. Game Over")
+            print(f"Sorry {userName}, you ran out of tries. Game Over\n")
             PlayArea.print_board(usrbd)
             break
 
 
 
-RunGame()
+runGame()
