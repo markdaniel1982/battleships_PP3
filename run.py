@@ -100,13 +100,13 @@ def runGame():
         PlayArea.print_board(usrbd)
         Xrow, Yclm = Battleship.get_userInput(object)
         while usrbd.board[Xrow][Yclm] == "-" or usrbd.board[Xrow][Yclm] == "X":
-            print("You've already guessed that. Please make another selection")
+            print("\nYou've already guessed that. Please make another selection\n")
             Xrow, Yclm = Battleship. get_userInput(object)
         if computer_board.board[Xrow][Yclm] == "X":
-            print(f"{userName} sunk 1 of the Battleships!\n")
+            print(f"\n{userName} sunk 1 of the Battleships!\n")
             usrbd.board[Xrow][Yclm] = "X"
         else:
-            print("You Missed!")
+            print("\nYou Missed!\n")
             usrbd.board[Xrow][Yclm] = "-"
         if Battleship.count_hit_ships(usrbd) == 5:
             print(f"{userName} hit all 5 battleships. WINNER!\n")
