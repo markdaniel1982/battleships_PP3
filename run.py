@@ -13,9 +13,9 @@ class PlayArea:
     def print_board(self):
         print("\u0332".join("  A B C D E"))
         row_number = 1
-        for row in self.board_
-        print("%d|%s|" % (row_number, "|".join(row)))
-        row_number += 1
+        for row in self.board:
+            print("%d|%s|" % (row_number, "|".join(row)))
+            row_number += 1
 
 
 class Battleship:
@@ -43,13 +43,17 @@ class Battleship:
             while Xrow not in "12345":
                 print("Not a valid choice. Please select a valid row")
                 Xrow = input("Choose a row (1-5): ")
-
+            return int(Xrow) - 1, PlayArea.get_let_to_num()[Yclm]
+        except ValueError and KeyError:
+            print("Not a valid input")
+            return self.get_user_input()
+                
     def count_hit_ships(self):
         hit_ships = 0
-        for row ion self.board_
-        for column in row:
-            if column == "X":
-                hit_ships += 1
+        for row in self.board:
+            for column in row:
+                if column == "X":
+                    hit_ships += 1
         return hit_ships
 
 
@@ -62,11 +66,11 @@ def RunGame():
     Battleship.place_ships(computer_board)
 
     turns = 10
-    if turns > 0:
+    while turns > 0:
         PlayArea.print_board(user_board)
         Xrow = Battleship.get_user_input(object)
         Yclm = Battleship.get_user_input(object)
-        if user_board[Xrow][Yclm] == "-" or user_board.board[Xrow][Yclm] == "X":
+        while user_board[Xrow][Yclm] == "-" or user_board.board[Xrow][Yclm] == "X":
             print("You've already guessed that one. Please make another selection")
             Xrow = Battleship.get_user_input(object)
         if computer_board.board[Xrow][Yclm] == "X":
@@ -80,9 +84,10 @@ def RunGame():
             break
         else:
             turns -= 1
-            print(you have {turns} tries remaining)
+            print(f"you have {turns} tries remaining")
             if turns == 0:
                 print(f"Sorry {user_name}. You ran out of tries. Game Over")
                 PlayArea.print_board(user_board)
                 break
-            
+
+RunGame()
