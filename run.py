@@ -47,15 +47,15 @@ class Battleship:
 
     def get_userInput(self):
         try:
-            Xrow = input("Choose a row (1-5): ")
+            Xrow = input("Choose a row (1-5): \n")
             while Xrow not in "12345":
                 print("Not a valid choice. Please select a valid row")
-                Xrow = input("Choose a row (1-5): ")
+                Xrow = input("Choose a row (1-5): \n")
 
-            Yclm = input("Choose a column (a-e): ").upper()
+            Yclm = input("Choose a column (a-e): \n").upper()
             while Yclm not in "ABCDE":
                 print("Not a valid choice. Please select a valid column")
-                Yclm = input("Choose a column (a-e): ").upper()
+                Yclm = input("Choose a column (a-e): \n").upper()
             return int(Xrow) - 1, PlayArea.get_let_to_num()[Yclm]
         except ValueError and KeyError:
             print("Not a valid input")
@@ -71,7 +71,7 @@ class Battleship:
 
 
 def runGame():
-    userName = input("Please enter your name: ")
+    userName = input("Please enter your name: \n")
 # CODE CREDIT Rules question - https://bobbyhadz.com/blog/python-input-yes-no
     yes_choices = ['yes', 'y']
     no_choices = ['no', 'n']
@@ -84,7 +84,7 @@ def runGame():
         delPrint(f"Ready {userName}. Let's Play!\n\n", .05)
 
     while True:
-        userInput = input('Do you want to see the rules? (yes/no): ')
+        userInput = input("Do you want to see the rules? (yes/no): \n")
         if userInput.lower() in yes_choices:
             showRules()
             break
