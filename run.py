@@ -43,3 +43,12 @@ class Battleship:
             while Xrow not in "12345":
                 print("Not a valid choice. Please select a valid row")
                 Xrow = input("Choose a row (1-5): ")
+
+    def count_hit_ships(self):
+        hit_ships = 0
+        for row ion self.board_
+        for column in row:
+            if column == "X":
+                hit_ships += 1
+        return hit_ships
+
