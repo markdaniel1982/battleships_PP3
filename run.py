@@ -52,3 +52,37 @@ class Battleship:
                 hit_ships += 1
         return hit_ships
 
+
+def RunGame():
+    user_name = input("Please enter your name: ")
+    print(f"Welcome {user_name}. Let's play!")
+
+    computer_board = PlayArea([[" "] * 5 for i in range(5)])
+    user_board = PlayArea([[" "] * 5 for i in range(5)])
+    Battleship.place_ships(computer_board)
+
+    turns = 10
+    if turns > 0:
+        PlayArea.print_board(user_board)
+        Xrow = Battleship.get_user_input(object)
+        Yclm = Battleship.get_user_input(object)
+        if user_board[Xrow][Yclm] == "-" or user_board.board[Xrow][Yclm] == "X":
+            print("You've already guessed that one. Please make another selection")
+            Xrow = Battleship.get_user_input(object)
+        if computer_board.board[Xrow][Yclm] == "X":
+            print(f"{user_name} sunk 1 of the Battleships!")
+            user_board.board[Xrow][Yclm] = "X"
+        else:
+            print("You Missed!")
+            user_board.board[Xrow][Yclm] = "-"
+        if Battleship.count_hit_ships(user_board) == 5:
+            print(f"{user_name} hit all 5 battleships. WINNER!")
+            break
+        else:
+            turns -= 1
+            print(you have {turns} tries remaining)
+            if turns == 0:
+                print(f"Sorry {user_name}. You ran out of tries. Game Over")
+                PlayArea.print_board(user_board)
+                break
+            
