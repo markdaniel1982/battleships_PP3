@@ -1,5 +1,13 @@
 import random
 
+import sys,time
+
+def delprint(text,delay_time):
+    for character in text:
+        sys.stdout.write(character)
+        sys.stdout.flush()
+        time.sleep(delay_time)
+
 
 class PlayArea:
     def __init__(self, board):
@@ -60,7 +68,28 @@ class Battleship:
 
 def RunGame():
     user_name = input("Please enter your name: ")
-    print(f"Welcome {user_name}. Let's play!")
+# CODE CREDIT Rules question - https://bobbyhadz.com/blog/python-input-yes-no
+    yes_choices = ['yes', 'y']
+    no_choices = ['no', 'n']
+
+    def show_rules():
+        delprint("\nFirst, select a row number between 1 & 5\n",.05)
+        delprint("Then select a column letter between A & E\n",.05)
+        delprint("if you hit a ship, an X will appear\n",.05)
+        delprint("if you miss, a - will appear\n\n",.05)
+        delprint(f"Ready {user_name}. Let's Play!\n\n", .05)
+
+    while True:
+        user_input = input('Do you want to see the rules? (yes/no): ')
+        if user_input.lower() in yes_choices:
+            show_rules()
+            break
+        elif user_input.lower() in no_choices:
+            delprint(f"OK {user_name}. Let's play!\n", .05)
+            break
+        else:
+            print('Type yes or no')
+            continue
 
     computer_board = PlayArea([[" "] * 5 for i in range(5)])
     usrbd = PlayArea([[" "] * 5 for i in range(5)])
@@ -89,6 +118,7 @@ def RunGame():
             print(f"Sorry {user_name}, you ran out of tries. Game Over")
             PlayArea.print_board(usrbd)
             break
+
 
 
 RunGame()
