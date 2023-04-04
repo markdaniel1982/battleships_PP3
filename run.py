@@ -1,5 +1,6 @@
 import random
 
+
 class PlayArea:
     def __init__(self, board):
         self.board = board
@@ -47,7 +48,7 @@ class Battleship:
         except ValueError and KeyError:
             print("Not a valid input")
             return self.get_user_input()
-                
+
     def count_hit_ships(self):
         hit_ships = 0
         for row in self.board:
@@ -81,12 +82,13 @@ def RunGame():
         if Battleship.count_hit_ships(user_board) == 5:
             print(f"{user_name} hit all 5 battleships. WINNER!")
             break
-        
+
         turns -= 1
         print(f"you have {turns} tries remaining")
         if turns == 0:
-            print(f"Sorry {user_name}. You ran out of tries. Game Over")
+            print(f"Sorry {user_name}, you ran out of tries. Game Over")
             PlayArea.print_board(user_board)
             break
+
 
 RunGame()
