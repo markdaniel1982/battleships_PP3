@@ -1,8 +1,10 @@
 import random
-import sys,time
+import sys
+import time
 
 
-def delPrint(text,delay_time):
+# CODE CREDIT - https://replit.com/talk/learn/The-Slow-Print/44741
+def delPrint(text, delay_time):
     for character in text:
         sys.stdout.write(character)
         sys.stdout.flush()
@@ -31,6 +33,8 @@ class Battleship:
     def __init__(self, board):
         self.board = board
 
+# Xrow - Rows. Yclm - Columns. both shortened to fit
+# within heroku deployment limits
     def place_ships(self):
         for i in range(5):
             self.Xrow, self.Yclm = random.randint(
@@ -73,10 +77,10 @@ def runGame():
     no_choices = ['no', 'n']
 
     def showRules():
-        delPrint("\nFirst, select a row number between 1 & 5\n",.05)
-        delPrint("Then select a column letter between A & E\n",.05)
-        delPrint("if you hit a ship, an X will appear\n",.05)
-        delPrint("if you miss, a - will appear\n\n",.05)
+        delPrint("\nFirst, select a row number between 1 & 5\n", .05)
+        delPrint("Then select a column letter between A & E\n", .05)
+        delPrint("if you hit a ship, an X will appear\n", .05)
+        delPrint("if you miss, a - will appear\n\n", .05)
         delPrint(f"Ready {userName}. Let's Play!\n\n", .05)
 
     while True:
@@ -100,7 +104,7 @@ def runGame():
         PlayArea.print_board(usrbd)
         Xrow, Yclm = Battleship.get_userInput(object)
         while usrbd.board[Xrow][Yclm] == "-" or usrbd.board[Xrow][Yclm] == "X":
-            print("\nYou've already guessed that. Please make another selection\n")
+            print("\nYou've already guessed that. Make another selection\n")
             Xrow, Yclm = Battleship. get_userInput(object)
         if computer_board.board[Xrow][Yclm] == "X":
             print(f"\n{userName} sunk 1 of the Battleships!\n")
@@ -118,7 +122,6 @@ def runGame():
             print(f"Sorry {userName}, you ran out of tries. Game Over\n")
             PlayArea.print_board(usrbd)
             break
-
 
 
 runGame()
