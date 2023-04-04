@@ -24,7 +24,7 @@ class Battleship:
 
     def place_ships(self):
         for i in range(5):
-            self.Xrow, self.Yclm = random.randit(
+            self.Xrow, self.Yclm = random.randint(
                 0, 4), random.randint(0, 4)
             while self.board[self.Xrow][self.Yclm] == "X":
                 self.Xrow, self.Yclm = random.randint(
