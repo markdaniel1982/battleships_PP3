@@ -63,23 +63,23 @@ def RunGame():
     print(f"Welcome {user_name}. Let's play!")
 
     computer_board = PlayArea([[" "] * 5 for i in range(5)])
-    user_board = PlayArea([[" "] * 5 for i in range(5)])
+    usrbd = PlayArea([[" "] * 5 for i in range(5)])
     Battleship.place_ships(computer_board)
 
     turns = 10
     while turns > 0:
-        PlayArea.print_board(user_board)
+        PlayArea.print_board(usrbd)
         Xrow, Yclm = Battleship.get_user_input(object)
-        while user_board.board[Xrow][Yclm] == "-" or user_board.board[Xrow][Yclm] == "X":
-            print("You've already guessed that one. Please make another selection")
+        while usrbd.board[Xrow][Yclm] == "-" or usrbd.board[Xrow][Yclm] == "X":
+            print("You've already guessed that. Please make another selection")
             Xrow, Yclm = Battleship. get_user_input(object)
         if computer_board.board[Xrow][Yclm] == "X":
             print(f"{user_name} sunk 1 of the Battleships!")
-            user_board.board[Xrow][Yclm] = "X"
+            usrbd.board[Xrow][Yclm] = "X"
         else:
             print("You Missed!")
-            user_board.board[Xrow][Yclm] = "-"
-        if Battleship.count_hit_ships(user_board) == 5:
+            usrbd.board[Xrow][Yclm] = "-"
+        if Battleship.count_hit_ships(usrbd) == 5:
             print(f"{user_name} hit all 5 battleships. WINNER!")
             break
 
@@ -87,7 +87,7 @@ def RunGame():
         print(f"you have {turns} tries remaining")
         if turns == 0:
             print(f"Sorry {user_name}, you ran out of tries. Game Over")
-            PlayArea.print_board(user_board)
+            PlayArea.print_board(usrbd)
             break
 
 
