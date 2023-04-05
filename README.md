@@ -57,13 +57,17 @@ _____
 _____
 I have manually tested the code using the following methods:
 * Passed the code through a PEP8 linter [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/) and confirmed there are no errors.
-* Used code to validated data input by the user when numbers when letters are expected, null entry, duplicate guesses
-* Tested the code in both the local terminal and the deployed site
+* Used code to validate data input by the user when:
+  * Entering numbers when letters are expected (and vice-versa).
+  * Pressing Enter without chosing row or column.
+  * Duplicate guesses.
+* Tested the code myself in both the local terminal and the deployed site using varying methods of entering valid and invalid data.
 
 ### Bugs
 * Fixed bugs
   * While writing this code, I had an issue where it was not running due to a typo in the code. `AttributeError: module 'random' has no attribute 'randit'`. I fixed this by searching for randit, and correcting the typo.
-  * I had the following error `TypeError: 'PlayArea' object is not subscriptable`. This was fixed by (rather painstakingly) reading through the code, to look for anything that didn't look right. Luckily I managed to spot the issue and correct it.
+  * I had the following error `TypeError: 'PlayArea' object is not subscriptable`. This was fixed by (rather painstakingly) reading through the code, to look for anything that didn't look right. Luckily I managed to spot the issue and correct it. I had missed `.board` in the function that places the ships.
+  * While testing validation and error messages, I discovered that there was no validation for when the user didnt enter a value for the row and/or column (ie, they just pressed enter without entering anything). This would have caused the game to fail, but I have now added code to check for null entries
   * When I felt I had a completed product, I passed the code through the PEP8 linter (linked above). The first time I was given the following errors:
 ![Validation Errors](documentation/validation_errors.png).
    
@@ -90,6 +94,8 @@ _____
   * Mock Terminal in Heroku
   * Structure and layout for Readme
 
+* Markdown Cheatsheet - https://www.markdownguide.org/cheat-sheet/
+
 * Code for Rules section (Basic idea used, but code was modified to suit this application) https://bobbyhadz.com/blog/python-input-yes-no
 
 * I watched and attempted several walkthrough projects on youtube before starting to create my own game including:
@@ -97,4 +103,4 @@ _____
   * https://www.youtube.com/watch?v=7Ki_2gr0rsE
   * https://www.youtube.com/watch?v=MgJBgnsDcF0
 
-The first video linked above is where I took most of my inspiration from as this had the most similar structure to what I had imagined before I made my own version.
+The first video linked above is where I took most of my inspiration from as this had the most similar structure to what I had imagined before I started on my own version of the game.

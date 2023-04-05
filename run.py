@@ -2,8 +2,13 @@ import random
 import sys
 import time
 
+# CODE CREDIT - Main inspiration from
+# https://www.youtube.com/watch?v=tF1WRCrd_HQ
+# but heavily modified the code to suit this application
 
 # CODE CREDIT - https://replit.com/talk/learn/The-Slow-Print/44741
+
+
 def delPrint(text, delay_time):
     for character in text:
         sys.stdout.write(character)
@@ -12,6 +17,10 @@ def delPrint(text, delay_time):
 
 
 class PlayArea:
+    """
+    Create the game board and change column letters to numbers
+    to allow hit/miss checks
+    """
     def __init__(self, board):
         self.board = board
 
@@ -30,6 +39,9 @@ class PlayArea:
 
 
 class Battleship:
+    """
+    Create and place the ships on the board
+    """
     def __init__(self, board):
         self.board = board
 
@@ -46,6 +58,9 @@ class Battleship:
         return self.board
 
     def get_userInput(self):
+        """
+        Validate input from user
+        """
         try:
             Xrow = input("Choose a row (1-5): \n")
             if Xrow not in "12345" or Xrow == "":
@@ -61,6 +76,9 @@ class Battleship:
             return self.get_userInput(self)
 
     def count_hit_ships(self):
+        """
+        Calculate if hit/miss
+        """
         hit_ships = 0
         for row in self.board:
             for column in row:
@@ -70,6 +88,10 @@ class Battleship:
 
 
 def runGame():
+    """
+    Recieve users name and ask if they need to see rules/instructions
+    and validates the responses
+    """
     userName = input("Please enter your name: \n")
 # CODE CREDIT Rules question - https://bobbyhadz.com/blog/python-input-yes-no
     yes_choices = ['yes', 'y']
@@ -97,7 +119,9 @@ def runGame():
     computer_board = PlayArea([[" "] * 5 for i in range(5)])
     usrbd = PlayArea([[" "] * 5 for i in range(5)])
     Battleship.place_ships(computer_board)
-
+    """
+    Counts down number of tries and validates guesses
+    """
     turns = 25
     while turns > 0:
         PlayArea.print_board(usrbd)
@@ -114,7 +138,9 @@ def runGame():
         if Battleship.count_hit_ships(usrbd) == 5:
             print(f"{userName} hit all 5 battleships. WINNER!\n")
             break
-
+        """
+        Ends game if turns reaches 0
+        """
         turns -= 1
         print(f"you have {turns} tries remaining")
         if turns == 0:
