@@ -48,18 +48,17 @@ class Battleship:
     def get_userInput(self):
         try:
             Xrow = input("Choose a row (1-5): \n")
-            while Xrow not in "12345":
+            if Xrow not in "12345" or Xrow == "":
                 print("Not a valid choice. Please select a valid row")
                 Xrow = input("Choose a row (1-5): \n")
-
             Yclm = input("Choose a column (a-e): \n").upper()
-            while Yclm not in "ABCDE":
+            if Yclm not in "ABCDE" or Yclm == "":
                 print("Not a valid choice. Please select a valid column")
                 Yclm = input("Choose a column (a-e): \n").upper()
             return int(Xrow) - 1, PlayArea.get_let_to_num()[Yclm]
-        except ValueError and KeyError:
+        except (ValueError, KeyError):
             print("Not a valid input")
-            return self.get_userInput()
+            return self.get_userInput(self)
 
     def count_hit_ships(self):
         hit_ships = 0
