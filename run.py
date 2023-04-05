@@ -76,10 +76,10 @@ def runGame():
     no_choices = ['no', 'n']
 
     def showRules():
-        delPrint("\nFirst, select a row number between 1 & 5\n", .05)
-        delPrint("Then select a column letter between a & e\n", .05)
-        delPrint("if you hit a ship, an X will appear\n", .05)
-        delPrint("if you miss, a - will appear\n\n", .05)
+        delPrint("\nFirst, select a row number between 1 & 5.\n", .05)
+        delPrint("Then select a column letter between a & e.\n", .05)
+        delPrint("If you hit a ship, an X will appear.\n", .05)
+        delPrint("If you miss, a - will appear.\n\n", .05)
         delPrint(f"Ready {userName}. Let's Play!\n\n", .05)
 
     while True:
