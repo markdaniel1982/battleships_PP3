@@ -77,7 +77,7 @@ def runGame():
 
     def showRules():
         delPrint("\nFirst, select a row number between 1 & 5\n", .05)
-        delPrint("Then select a column letter between A & E\n", .05)
+        delPrint("Then select a column letter between a & e\n", .05)
         delPrint("if you hit a ship, an X will appear\n", .05)
         delPrint("if you miss, a - will appear\n\n", .05)
         delPrint(f"Ready {userName}. Let's Play!\n\n", .05)
