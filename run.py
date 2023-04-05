@@ -80,7 +80,7 @@ def runGame():
         delPrint("Then select a column letter between a & e.\n", .05)
         delPrint("If you hit a ship, an X will appear.\n", .05)
         delPrint("If you miss, a - will appear.\n\n", .05)
-        delPrint(f"Ready {userName}. Let's Play!\n\n", .05)
+        delPrint(f"OK, Captain {userName}. Let's play!\n\n", .05)
 
     while True:
         userInput = input("Do you want to see the rules? (yes/no): \n")
@@ -88,7 +88,7 @@ def runGame():
             showRules()
             break
         elif userInput.lower() in no_choices:
-            delPrint(f"OK {userName}. Let's play!\n", .05)
+            delPrint(f"OK, Captain {userName}. Let's play!\n", .05)
             break
         else:
             print('Type yes or no')
