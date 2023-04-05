@@ -1,31 +1,100 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# BATTLESHIPS
 
-Welcome Mark Daniel,
+Battleships is a Python terminal game, which runs in the Code Institute mock terminal on Heroku.
 
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
+The aim of the game is to sink all of your opponents battleships. In this version, each ship takes up one square on the board.
 
-## Reminders
+[Here is a link to my live version](https://md1982-battleships.herokuapp.com/)
 
-* Your code must be placed in the `run.py` file
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
+![Responsive Test](documentation/responsive.png)
 
-## Creating the Heroku app
+## How to play
+______
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+Battleships is based on the classic pen & paper game. You can read more about it on [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)).
 
-1. `heroku/python`
-2. `heroku/nodejs`
+In my version, the player first enters their name. they are then asked if they would like to see the rules/instructions. 
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+A board appears and there are 5 randomly placed ships which are hidden. The user is then prompted to first select a row between 1 -5, and then a column between a - e.
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
 
-Connect your GitHub repository and deploy as normal.
+![Name entry & rules](documentation/name_and_rules.png)
 
-## Constraints
+If the selection hits the opponents battleship, an "X" will appear, if it's miss, a "-" (minus symbol) will appear.
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
+![Hit and Miss Examples](documentation/hit_miss_example.png)
 
------
-Happy coding!
+The player has 10 attempts to sink all 5 of the opponents ships, each missed shot reduces the number of attempts remaining.
+
+*(Note: for the purposes of testing all text strings, I had set the number of tries to 25, in the final deployed version, this will be limited to 10)*
+
+## Features
+_____
+
+* Random ship placement
+  * The ships are randomly placed on the board.
+  * The position of the ships are hidden from the player. 
+* Accepts user input
+* Validation & error-checking
+  * User cannot enter a selection outside of the scope of the board
+  * User cannot enter a null value (by just pressing enter without entering a selection)
+  * User cannot use the same guess more than once
+![Error and duplicate validation](documentation/duplicate_and_null_entered.png)
+
+Below is a flow of how I had planned the game to run
+
+![Flow Chart](documentation/battleships_flowchart.png)
+
+## Future Implementable Features
+_____
+
+* Allow user to select board size
+* Allow larger ships
+* Allow user to place ships manually
+* Allow user to change orientation of larger ships
+
+## Testing
+_____
+I have manually tested the code using the following methods:
+* Passed the code through a PEP8 linter [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/) and confirmed there are no errors.
+* Used code to validated data input by the user when numbers when letters are expected, null entry, duplicate guesses
+* Tested the code in both the local terminal and the deployed site
+
+### Bugs
+* Fixed bugs
+  * While writing this code, I had an issue where it was not running due to a typo in the code. `AttributeError: module 'random' has no attribute 'randit'`. I fixed this by searching for randit, and correcting the typo.
+  * I had the following error `TypeError: 'PlayArea' object is not subscriptable`. This was fixed by (rather painstakingly) reading through the code, to look for anything that didn't look right. Luckily I managed to spot the issue and correct it.
+  * When I felt I had a completed product, I passed the code through the PEP8 linter (linked above). The first time I was given the following errors:
+![Validation Errors](documentation/validation_errors.png).
+   
+   These were all corrected immediately with the exception of the error in lines 34 and 104 (steps to fix stated below).
+  * The issue with the error in Line 34 was fixed by renaming the variable "user_board" to "usrbd" to reduce the number of characters in the code to fit with the restrictions in Code Institue's mock terminal for Heroku (the length is limited to 79 characters wide). Line 104 was fixed by simply removing 1 word ("Please")
+
+* Unresolved Bugs
+ * To my knowledge, There are no unresolved bugs
+
+
+## Deployment
+This project was deployed using Code Institue's mock terminal for Heroku.
+
+ * Steps for deployment
+  * Create in gitpod
+  * commit/push to github
+  * Create a new app in Heroku
+  * link Heroku to Github repository
+  * Click on **Deploy**
+
+## Credits
+_____
+* Code institute
+  * Mock Terminal in Heroku
+  * Structure and layout for Readme
+
+* Code for Rules section (Basic idea used, but code was modified to suit this application) https://bobbyhadz.com/blog/python-input-yes-no
+
+* I watched and attempted several walkthrough projects on youtube before starting to create my own game including:
+  * https://www.youtube.com/watch?v=tF1WRCrd_HQ
+  * https://www.youtube.com/watch?v=7Ki_2gr0rsE
+  * https://www.youtube.com/watch?v=MgJBgnsDcF0
+
+The first video linked above is where I took most of my inspiration from as this had the most similar structure to what I had imagined before I made my own version.
