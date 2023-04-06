@@ -88,21 +88,41 @@ class Battleship:
 
 
 def runGame():
+
+# CREDIT - ASCII art from https://www.asciiart.eu/vehicles/navy
+    print("""
+Welcome to
+
+                           _______/__/_
+                  ___     /===========|   ___
+ ____       __   [\\\]___/____________|__[///]   __
+ \   \_____[\\]__/___________________________\__[//]___
+  \  ___  ____ ___ ___ _    ____ ____ _  _ _ ___  ____ /
+   \ |__] |__|  |   |  |    |___ [__  |__| | |__] |__ /
+    \|__] |  |  |   |  |___ |___ ___] |  | | |    ___/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+""")
+
     """
     Recieve users name and ask if they need to see rules/instructions
     and validates the responses
     """
-    userName = input("Please enter your name: \n")
+
+    userName = input("Aye, Captain. What be your name?: \n")
+    if userName == "":
+        print("Please enter a name")
+        userName = input("Aye, Captain. What be your name?: \n")
+
 # CODE CREDIT Rules question - https://bobbyhadz.com/blog/python-input-yes-no
     yes_choices = ['yes', 'y']
     no_choices = ['no', 'n']
 
     def showRules():
-        delPrint("\nFirst, select a row number between 1 & 5.\n", .05)
-        delPrint("Then select a column letter between a & e.\n", .05)
-        delPrint("If you hit a ship, an X will appear.\n", .05)
-        delPrint("If you miss, a - will appear.\n\n", .05)
-        delPrint(f"OK, Captain {userName}. Let's play!\n\n", .05)
+        delPrint("\nFirst, select a row number between 1 & 5.\n", .03)
+        delPrint("Then select a column letter between a & e.\n", .03)
+        delPrint("If you hit a ship, an X will appear.\n", .03)
+        delPrint("If you miss, a - will appear.\n\n", .03)
+        delPrint(f"OK, Captain {userName}. Let's play!\n\n", .03)
 
     while True:
         userInput = input("Do you want to see the rules? (yes/no): \n")
@@ -110,7 +130,7 @@ def runGame():
             showRules()
             break
         elif userInput.lower() in no_choices:
-            delPrint(f"OK, Captain {userName}. Let's play!\n", .05)
+            delPrint(f"OK, Captain {userName}. Let's play!\n\n", .03)
             break
         else:
             print('Type yes or no')
