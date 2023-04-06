@@ -47,7 +47,7 @@ class Battleship:
 
 # Xrow - Rows. Yclm - Columns. both shortened to fit
 # within heroku deployment limits
-    def place_ships(self):
+    def placeShips(self):
         for i in range(5):
             self.Xrow, self.Yclm = random.randint(
                 0, 4), random.randint(0, 4)
@@ -57,7 +57,7 @@ class Battleship:
             self.board[self.Xrow][self.Yclm] = "X"
         return self.board
 
-    def get_userInput(self):
+    def getUserInput(self):
         """
         Validate input from user
         """
@@ -67,15 +67,15 @@ class Battleship:
                 print("Not a valid choice. Please select a valid row")
                 Xrow = input("Choose a row (1-5): \n")
             Yclm = input("Choose a column (a-e): \n").upper()
-            if Yclm not in "ABCDE" or Yclm == "":
+            if Yclm not in "ABCDE" or Yclm == "" or type(Yclm) == int:
                 print("Not a valid choice. Please select a valid column")
                 Yclm = input("Choose a column (a-e): \n").upper()
             return int(Xrow) - 1, PlayArea.get_let_to_num()[Yclm]
         except (ValueError, KeyError):
             print("Not a valid input")
-            return self.get_userInput(self)
+            return self.getUserInput(self)
 
-    def count_hit_ships(self):
+    def countHitShips(self):
         """
         Calculate if hit/miss
         """
@@ -129,33 +129,33 @@ Welcome to
         if userInput.lower() in yes_choices:
             showRules()
             break
-        elif userInput.lower() in no_choices:
+        if userInput.lower() in no_choices:
             delPrint(f"OK, Captain {userName}. Let's play!\n\n", .03)
             break
         else:
             print('Type yes or no')
             continue
 
-    computer_board = PlayArea([[" "] * 5 for i in range(5)])
+    computerBoard = PlayArea([[" "] * 5 for i in range(5)])
     usrbd = PlayArea([[" "] * 5 for i in range(5)])
-    Battleship.place_ships(computer_board)
+    Battleship.placeShips(computerBoard)
     """
     Counts down number of tries and validates guesses
     """
     turns = 25
     while turns > 0:
         PlayArea.print_board(usrbd)
-        Xrow, Yclm = Battleship.get_userInput(object)
+        Xrow, Yclm = Battleship.getUserInput(object)
         while usrbd.board[Xrow][Yclm] == "-" or usrbd.board[Xrow][Yclm] == "X":
             print("\nYou've already guessed that. Make another selection\n")
-            Xrow, Yclm = Battleship. get_userInput(object)
-        if computer_board.board[Xrow][Yclm] == "X":
+            Xrow, Yclm = Battleship. getUserInput(object)
+        if computerBoard.board[Xrow][Yclm] == "X":
             print(f"\n{userName} sunk 1 of the Battleships!\n")
             usrbd.board[Xrow][Yclm] = "X"
         else:
             print("\nYou Missed!\n")
             usrbd.board[Xrow][Yclm] = "-"
-        if Battleship.count_hit_ships(usrbd) == 5:
+        if Battleship.countHitShips(usrbd) == 5:
             print(f"{userName} hit all 5 battleships. WINNER!\n")
             break
         """
