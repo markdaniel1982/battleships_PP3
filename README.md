@@ -69,13 +69,14 @@ I have manually tested the code using the following methods:
   * I had the following error `TypeError: 'PlayArea' object is not subscriptable`. This was fixed by (rather painstakingly) reading through the code, to look for anything that didn't look right. Luckily I managed to spot the issue and correct it. I had missed `.board` in the function that places the ships.
   * While testing validation and error messages, I discovered that there was no validation for when the user didnt enter a value for the row and/or column (ie, they just pressed enter without entering anything). This would have caused the game to fail, but I have now added code to check for null entries
   * When I felt I had a completed product, I passed the code through the PEP8 linter (linked above). The first time I was given the following errors:
-![Validation Errors](documentation/validation_errors.png).
+
+    ![Validation Errors](documentation/validation_errors.png).
    
-   These were all corrected immediately with the exception of the error in lines 34 and 104 (steps to fix stated below).
+    These were all corrected immediately with the exception of the error in lines 34 and 104 (steps to fix stated below).
   * The issue with the error in Line 34 was fixed by renaming the variable "user_board" to "usrbd" to reduce the number of characters in the code to fit with the restrictions in Code Institue's mock terminal for Heroku (the length is limited to 79 characters wide). Line 104 was fixed by simply removing 1 word ("Please")
 
 * Unresolved Bugs
- * 1 unresolved bug that I have found is the validation checks for the row number seem to allow the numbers 7 & 9. I have currently been unable to discover why this is happening, but fully intend to investigate further in the future
+ * 1 unresolved bug that I have found is the validation checks for the row number seem to allow the numbers 7 & 9. I have currently been unable to discover why this is happening, but fully intend to investigate further in the future.
 
 
 ## Deployment
