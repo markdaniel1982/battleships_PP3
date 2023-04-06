@@ -63,7 +63,7 @@ class Battleship:
         """
         try:
             Xrow = input("Choose a row (1-5): \n")
-            if Xrow not in "12345" or Xrow == "":
+            if Xrow not in "12345" or Xrow == "" or type(Xrow) != int:
                 print("Not a valid choice. Please select a valid row")
                 Xrow = input("Choose a row (1-5): \n")
             Yclm = input("Choose a column (a-e): \n").upper()
@@ -89,7 +89,7 @@ class Battleship:
 
 def runGame():
 
-# CREDIT - ASCII art from https://www.asciiart.eu/vehicles/navy
+    # CREDIT - ASCII art from https://www.asciiart.eu/vehicles/navy
     print("""
 Welcome to
 
