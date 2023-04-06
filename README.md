@@ -75,7 +75,7 @@ I have manually tested the code using the following methods:
   * The issue with the error in Line 34 was fixed by renaming the variable "user_board" to "usrbd" to reduce the number of characters in the code to fit with the restrictions in Code Institue's mock terminal for Heroku (the length is limited to 79 characters wide). Line 104 was fixed by simply removing 1 word ("Please")
 
 * Unresolved Bugs
- * To my knowledge, There are no unresolved bugs
+ * 1 unresolved bug that I have found is the validation checks for the row number seem to allow the numbers 7 & 9. I have currently been unable to discover why this is happening, but fully intend to investigate further in the future
 
 
 ## Deployment
