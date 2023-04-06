@@ -30,7 +30,7 @@ class PlayArea:
 
 # CODE CREDIT - https://stackoverflow.com/questions/35401019
 # /how-do-i-print-something-underlined-in-python
-    def print_board(self):
+    def printBoard(self):
         print("\u0332".join("  A B C D E"))
         row_number = 1
         for row in self.board:
@@ -114,8 +114,8 @@ Welcome to
         userName = input("Aye, Captain. What be your name?: \n")
 
 # CODE CREDIT Rules question - https://bobbyhadz.com/blog/python-input-yes-no
-    yes_choices = ['yes', 'y']
-    no_choices = ['no', 'n']
+    yesChoices = ['yes', 'y']
+    noChoices = ['no', 'n']
 
     def showRules():
         delPrint("\nFirst, select a row number between 1 & 5.\n", .03)
@@ -126,10 +126,10 @@ Welcome to
 
     while True:
         userInput = input("Do you want to see the rules? (yes/no): \n")
-        if userInput.lower() in yes_choices:
+        if userInput.lower() in yesChoices:
             showRules()
             break
-        if userInput.lower() in no_choices:
+        if userInput.lower() in noChoices:
             delPrint(f"OK, Captain {userName}. Let's play!\n\n", .03)
             break
         else:
@@ -144,7 +144,7 @@ Welcome to
     """
     turns = 25
     while turns > 0:
-        PlayArea.print_board(usrbd)
+        PlayArea.printBoard(usrbd)
         Xrow, Yclm = Battleship.getUserInput(object)
         while usrbd.board[Xrow][Yclm] == "-" or usrbd.board[Xrow][Yclm] == "X":
             print("\nYou've already guessed that. Make another selection\n")
@@ -165,7 +165,7 @@ Welcome to
         print(f"you have {turns} tries remaining")
         if turns == 0:
             print(f"Sorry {userName}, you ran out of tries. Game Over\n")
-            PlayArea.print_board(usrbd)
+            PlayArea.printBoard(usrbd)
             break
 
 
