@@ -140,7 +140,7 @@ Welcome to
     usrbd = PlayArea([[" "] * 5 for i in range(5)])
     Battleship.placeShips(computerBoard)
     """    Counts down number of tries and validates guesses    """
-    turns = 25
+    turns = 10
     while turns > 0:
         PlayArea.printBoard(usrbd)
         Xrow, Yclm = Battleship.getUserInput(object)
