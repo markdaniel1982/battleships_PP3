@@ -62,14 +62,20 @@ class Battleship:
         Validate input from user
         """
         try:
-            Xrow = input("Choose a row (1-5): \n")
-            if Xrow not in "12345" or Xrow == "" or type(Xrow) != int:
-                print("Not a valid choice. Please select a valid row")
+            while True:
                 Xrow = input("Choose a row (1-5): \n")
-            Yclm = input("Choose a column (a-e): \n").upper()
-            if Yclm not in "ABCDE" or Yclm == "" or type(Yclm) == int:
-                print("Not a valid choice. Please select a valid column")
-                Yclm = input("Choose a column (a-e): \n").upper()
+                if Xrow not in ["1", "2", "3", "4", "5"] or Xrow == "":
+                    print("Not a valid choice. Please select a valid row")
+                    continue
+                else:
+                    break
+            while True:
+                Yclm = input("Choose a column (A-E): \n").upper()
+                if Yclm not in ["A", "B", "C", "D", "E"] or Yclm == "":
+                    print("Not a valid choice. Please select a valid column")
+                    continue
+                else:
+                    break
             return int(Xrow) - 1, PlayArea.get_let_to_num()[Yclm]
         except (ValueError, KeyError):
             print("Not a valid input")
@@ -139,16 +145,14 @@ Welcome to
     computerBoard = PlayArea([[" "] * 5 for i in range(5)])
     usrbd = PlayArea([[" "] * 5 for i in range(5)])
     Battleship.placeShips(computerBoard)
-    """
-    Counts down number of tries and validates guesses
-    """
+    """    Counts down number of tries and validates guesses    """
     turns = 25
     while turns > 0:
         PlayArea.printBoard(usrbd)
         Xrow, Yclm = Battleship.getUserInput(object)
         while usrbd.board[Xrow][Yclm] == "-" or usrbd.board[Xrow][Yclm] == "X":
             print("\nYou've already guessed that. Make another selection\n")
-            Xrow, Yclm = Battleship. getUserInput(object)
+            Xrow, Yclm = Battleship.getUserInput(object)
         if computerBoard.board[Xrow][Yclm] == "X":
             print(f"\n{userName} sunk 1 of the Battleships!\n")
             usrbd.board[Xrow][Yclm] = "X"
@@ -158,9 +162,7 @@ Welcome to
         if Battleship.countHitShips(usrbd) == 5:
             print(f"{userName} hit all 5 battleships. WINNER!\n")
             break
-        """
-        Ends game if turns reaches 0
-        """
+        """        Ends game if turns reaches 0        """
         turns -= 1
         print(f"you have {turns} tries remaining")
         if turns == 0:
