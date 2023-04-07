@@ -8,6 +8,18 @@ The aim of the game is to sink all of your opponents battleships. In this versio
 
 ![Responsive Test](documentation/responsive.png)
 
+## Contents
+
+* [How to Play](#how-to-play)
+* [Features](#features)
+* [Flow Chart](#flow-chart)
+* [Future Impeimentation Ideas](#future-implementable-features)
+* [Testing](#testing)
+* [Bugs](#bugs)
+* [Deployment](#deployment)
+* [Credits](#credits)
+
+
 ## How to play
 ______
 
@@ -41,11 +53,16 @@ _____
   * User cannot use the same guess more than once
 ![Error and duplicate validation](documentation/duplicate_and_null_entered.png)
 
-Below is a flow of how I had planned the game to run
+## Flow Chart
+_____
+Below is a flow of how I had planned the game to run.
 
-![Flow Chart](documentation/battleships_flowchart.png)
 
-## Future Implementable Features
+![Flowchart](documentation/battleships_flowchart.png)
+
+The chart was made using [Lucid Flowcharts](https://www.lucidchart.com/pages/)
+
+## Future Implementation Ideas
 _____
 
 * Allow user to select board size
@@ -56,7 +73,7 @@ _____
 ## Testing
 _____
 I have manually tested the code using the following methods:
-* Passed the code through a PEP8 linter [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/) and confirmed there are no errors.
+* Passed the code through a PEP8 linter [Code Institute PEP8 Linter](https://pep8ci.herokuapp.com/) and confirmed there are no code related errors. *(The only remaining advisories in the PEP8 linter come from the ASCII art of the ship.)*
 * Used code to validate data input by the user when:
   * Entering numbers when letters are expected (and vice-versa).
   * Pressing Enter without chosing row or column.
@@ -74,10 +91,11 @@ I have manually tested the code using the following methods:
    
     These were all corrected immediately with the exception of the error in lines 34 and 104 (steps to fix stated below).
   * The issue with the error in Line 34 was fixed by renaming the variable "user_board" to "usrbd" to reduce the number of characters in the code to fit with the restrictions in Code Institue's mock terminal for Heroku (the length is limited to 79 characters wide). Line 104 was fixed by simply removing 1 word ("Please")
+  * 1 ongoing bug that I found was the validation checks for the row number seem to allow the numbers 7 & 9. This was fixed by adding the valid options into a proper array and encasing in "`while True:`"
+
 
 * Unresolved Bugs
- * 1 unresolved bug that I have found is the validation checks for the row number seem to allow the numbers 7 & 9. I have currently been unable to discover why this is happening, but fully intend to investigate further in the future.
-
+  * I have not found any further bugs or, to my knowledge left any unresolved bugs.
 
 ## Deployment
 This project was deployed using Code Institue's mock terminal for Heroku.
@@ -99,9 +117,11 @@ _____
 
 * Code for Rules section (Basic idea used, but code was modified to suit this application) https://bobbyhadz.com/blog/python-input-yes-no
 
+* An extra special thank you to Steve Podmore for help with the validation bug issue
+* [Lucid Flowcharts](https://www.lucidchart.com/pages/)
 * I watched and attempted several walkthrough projects on youtube before starting to create my own game including:
   * https://www.youtube.com/watch?v=tF1WRCrd_HQ
   * https://www.youtube.com/watch?v=7Ki_2gr0rsE
   * https://www.youtube.com/watch?v=MgJBgnsDcF0
 
-The first video linked above is where I took most of my inspiration from as this had the most similar structure to what I had imagined before I started on my own version of the game.
+    The first video linked above is where I took most of my inspiration from as this had the most similar structure to what I had imagined before I started on my own version of the game.
