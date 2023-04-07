@@ -1,6 +1,6 @@
-import random
-import sys
-import time
+import random  #for creating ship positioning
+import sys  # Used to add typing effect on display text
+import time  # Used to add typing effect on display text
 
 # CODE CREDIT - Main inspiration from
 # https://www.youtube.com/watch?v=tF1WRCrd_HQ
@@ -39,9 +39,7 @@ class PlayArea:
 
 
 class Battleship:
-    """
-    Create and place the ships on the board
-    """
+    """    Create and place the ships on the board    """
     def __init__(self, board):
         self.board = board
 
@@ -58,9 +56,7 @@ class Battleship:
         return self.board
 
     def getUserInput(self):
-        """
-        Validate input from user
-        """
+        """        Recieve and validate input from user        """
         try:
             while True:
                 Xrow = input("Choose a row (1-5): \n")
@@ -82,9 +78,7 @@ class Battleship:
             return self.getUserInput(self)
 
     def countHitShips(self):
-        """
-        Calculate if hit/miss
-        """
+        """        Calculate if hit/miss        """
         hit_ships = 0
         for row in self.board:
             for column in row:
